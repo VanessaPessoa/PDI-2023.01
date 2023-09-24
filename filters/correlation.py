@@ -14,30 +14,19 @@ class Correlation:
         with open(filename, "r") as file:
             lines = file.readlines()
             for line in range(len(lines)):
-                values = re.findall("[-+]?[0-9]+\.?[0-9]+", lines[line])
                 stride = re.findall("stride\s*=\s*(\d+)", lines[line])
                 if stride:
                     self.stride = int(stride[0])
+                else:
+                    values = re.findall("([-+]?\d*\.?\d+)", lines[line])
 
-                if values:
-                    row = np.array(list(map(float, values)))
-                    if not self.kernel:
-                        # Se self.kernel estiver vazio, adicione a primeira linha como uma única matriz
-                        self.kernel.append(row)
-                    else:
-                        num_columns_current = row.shape[0]
-                        # Verifique o número de colunas na máscara atual
-                        num_columns_first = self.kernel[0].shape[0]
-
-                        if num_columns_current < num_columns_first:
-                            # Se o número de colunas na linha atual for menor, preencha com zeros
-                            row = np.pad(
-                                row,
-                                (0, num_columns_first - num_columns_current),
-                                "constant",
-                            )
-
-                        self.kernel.append(row)
+                    if values:
+                        row = np.array(list(map(float, values)))
+                        if not self.kernel:
+                            # Se self.kernel estiver vazio, adicione a primeira linha como uma única matriz
+                            self.kernel.append(row)
+                        else:
+                            self.kernel.append(row)
             self.kernel = np.array(self.kernel)
 
     def apply(self, np_image):
