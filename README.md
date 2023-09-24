@@ -29,7 +29,7 @@ para [0, 255].
 ## 
 - Do 1 ao 3 esta no arquivo `main.py`. Ao executar o arquivo vai solicitar o nome do arquivo que deseja aplicar os filtros e o formato, lembrando que o arquivo precisa esta na pasta `/img`. Os resultados serão salvos nas pastas `output/q1`, `output/q2` ou `output/q3` de acordo com o numero da atividade.
 
-Na questão 2 pede "Alteração de matiz e saturação no HSB", têm duas maneiras de aplicar a alteração: alterando todo o valor da matiz, ou fazendo o grau da matiz "deslizar" de acordo com o parametro informado. O mesmo vale para a saturação.
+- Na questão 2 pede "Alteração de matiz e saturação no HSB", têm duas maneiras de aplicar a alteração: alterando todo o valor da matiz, ou fazendo o grau da matiz "deslizar" de acordo com o parametro informado. O mesmo vale para a saturação.
 
 - A questão 4 trata-se de correlação m x n com stride, para executar rode o arquivo `mainCorrelation.py`, vai solicitar o nome do arquivo que deseja aplicar as correlações e o formato. Esse código executa a correlação do filtro Box(média) e filtro Sobel informados nos arquivos `/kernel` nos formatos txt. Você pode alterar os valores deste arquivo se quiser mudar a dimensão da mascara ou do stride.
 
