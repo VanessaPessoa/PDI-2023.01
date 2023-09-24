@@ -1,7 +1,7 @@
 # PDI-2023.01
 Primeiro Projeto da disciplina PDI
 
-Dependências
+### Dependências
 É necessário ter as seguintes dependencias:
 
 opencv
@@ -26,7 +26,7 @@ Box15x15(imagem), em termos de resultado e tempo de processamento. Para
 visualização do Sobel, aplique valor absoluto seguido por expansão de histograma
 para [0, 255].
 
-## 
+### Informações importantes para executar o projeto
 - Do 1 ao 3 esta no arquivo `main.py`. Ao executar o arquivo vai solicitar o nome do arquivo que deseja aplicar os filtros e o formato, lembrando que o arquivo precisa esta na pasta `/img`. Os resultados serão salvos nas pastas `output/q1`, `output/q2` ou `output/q3` de acordo com o numero da atividade.
 
 - Na questão 2 pede "Alteração de matiz e saturação no HSB", têm duas maneiras de aplicar a alteração: alterando todo o valor da matiz, ou fazendo o grau da matiz "deslizar" de acordo com o parametro informado. O mesmo vale para a saturação.
