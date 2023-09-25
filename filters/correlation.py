@@ -1,5 +1,6 @@
 import numpy as np
 import re
+import matplotlib.pyplot as plt
 
 
 class Correlation:
@@ -55,3 +56,30 @@ class Correlation:
                 result[i, j] = sum
 
         return result
+
+    def expanded_gradient(self, np_image):
+        result = np.zeros(np_image.shape)
+        (row, col, _) = np_image.shape
+        rmax = np.amax(np_image)
+        rmin = np.amin(np_image)
+        delta = rmax - rmin
+
+        if delta == 0:
+            return np.zeros((row, col, 3))
+
+        for i in range(0, row):
+            for j in range(0, col):
+                r = np_image[i, j]
+                result[i, j] = ((r - rmin) / delta) * 255
+        return result
+
+    def histogram(self, array):
+        (hist, _) = np.histogram(array, bins=256, range=(0, 255))
+        hist = hist / hist.sum()
+        plt.figure(figsize=(8, 4))
+        plt.plot(hist, color="red")
+        plt.title("Histograma do níveis de cinza")
+        plt.xlabel("Valor de Intensidade")
+        plt.ylabel("Frequência Normalizada")
+        plt.xlim(0, 255)
+        plt.show()

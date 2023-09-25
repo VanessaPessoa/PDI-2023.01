@@ -54,6 +54,8 @@ def main():
     gradient_magnitude = np.sqrt(sobelHotizontal**2 + sobelVertical**2)
     cv2.imwrite(f"output/q4/{name_img}_Sobel.{image_format}", gradient_magnitude)
 
+    expanded_gradient = correlation.expanded_gradient(gradient_magnitude)
+    correlation.histogram(expanded_gradient)
 
 if __name__ == "__main__":
     main()
