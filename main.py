@@ -5,7 +5,7 @@ from filters.RGB import RGB
 
 def load_image(image_path):
     try:
-        img = cv2.imread(image_path)
+        img = cv2.imread(image_path, cv2.IMREAD_UNCHANGED)
         if img is None:
             raise FileNotFoundError
         return img
@@ -15,7 +15,8 @@ def load_image(image_path):
 
 
 def save_image(output_path, image):
-    cv2.imwrite(output_path, image)
+    image_converted = cv2.convertScaleAbs(image)
+    cv2.imwrite(output_path, image_converted)
 
 
 def main():
@@ -40,7 +41,7 @@ def main():
 
     # 2. Alteração de matiz e saturação no HSB
     color = float(input("Informe um valor de 0 a 360 para ser a cor da matiz:"))
-    img_hue_change_value = hsb.setHue(color, img_hsb)
+    img_hue_change_value = hsb.set_hue(color, img_hsb)
     save_image(
         f"output/q2/{name_img}_hue_change_value.{image_format}", img_hue_change_value
     )
@@ -50,7 +51,7 @@ def main():
     )
 
     degree = float(input("Informe um valor de 0 a 360 para somar no grau da matiz:"))
-    img_hue_change_degree = hsb.setHueDegree(degree, img_hsb)
+    img_hue_change_degree = hsb.set_hue_degree(degree, img_hsb)
     save_image(
         f"output/q2/{name_img}_hue_change_degree.{image_format}", img_hue_change_degree
     )
@@ -60,7 +61,7 @@ def main():
     )
 
     saturation = float(input("Informe um valor de 0 a 1 para ser a saturação:"))
-    img_saturation_change_value = hsb.setSaturation(saturation, img_hsb)
+    img_saturation_change_value = hsb.set_saturation(saturation, img_hsb)
     save_image(
         f"output/q2/{name_img}_saturation_change_value.{image_format}",
         img_saturation_change_value,
@@ -71,7 +72,7 @@ def main():
     )
 
     degree = float(input("Informe um valor de 0 a 1 para somar no grau da saturação:"))
-    img_saturation_change_degree = hsb.setSaturationDegree(degree, img_hsb)
+    img_saturation_change_degree = hsb.set_saturation_degree(degree, img_hsb)
     save_image(
         f"output/q2/{name_img}_saturation_change_degree.{image_format}",
         img_saturation_change_degree,

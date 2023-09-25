@@ -4,7 +4,7 @@ from functools import reduce
 
 
 class HSB:
-    def fractionalColors(self, hue, saturation, brightness):
+    def fractional_colors(self, hue, saturation, brightness):
         sectorPos = hue / 60.0
         sectorNumber = int(math.floor(sectorPos))
         fractionalSector = sectorPos - sectorNumber
@@ -36,12 +36,12 @@ class HSB:
                 if saturation == 0:
                     result[i, j] = (brightness, brightness, brightness)
                     continue
-                (r, g, b) = self.fractionalColors(hue, saturation, brightness)
+                (r, g, b) = self.fractional_colors(hue, saturation, brightness)
                 result[i, j] = (r * 255.0, g * 255.0, b * 255.0)
 
         return result
 
-    def setHueDegree(self, degree, np_image):
+    def set_hue_degree(self, degree, np_image):
         (row, col, _) = np_image.shape
         result = np.zeros((row, col, 3))
         for i in range(0, row):
@@ -50,7 +50,7 @@ class HSB:
                 result[i, j] = ((h + degree) % 360, s, b)
         return result
 
-    def setHue(self, value, np_image):
+    def set_hue(self, value, np_image):
         (row, col, _) = np_image.shape
         result = np.zeros((row, col, 3))
         for i in range(0, row):
@@ -64,7 +64,7 @@ class HSB:
                 result[i, j] = (h, s, b)
         return result
 
-    def setSaturation(self, value, np_image):
+    def set_saturation(self, value, np_image):
         (row, col, _) = np_image.shape
         result = np.zeros((row, col, 3))
         for i in range(0, row):
@@ -78,7 +78,7 @@ class HSB:
                 result[i, j] = (h, s, b)
         return result
 
-    def setSaturationDegree(self, degree, np_image):
+    def set_saturation_degree(self, degree, np_image):
         (row, col, _) = np_image.shape
         result = np.zeros((row, col, 3))
         for i in range(0, row):
